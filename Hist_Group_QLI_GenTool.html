@@ -63,7 +63,7 @@
         }
         
         var preview =  groupNamePrefix + " " + itemNamePrefix + " " + groupSettingsValue + " " + numOfGroups + " " + itemPerGroups ;
-        document.getElementById('output').innerHTML = preview;
+        document.getElementById('output').innerHTML = generateQLILines(groupNamePrefix, itemNamePrefix, groupSettingsValue, numOfGroups,itemPerGroups);
     }
     
     function getNumericValueFromTextField(textElementValue){
@@ -73,7 +73,7 @@
     }
     
     function getPreviewText(groupNamePrefix, itemNamePrefix, groupSettingsValue){
-        "HIS_GR1:SECTION1.ITEM100000","SECTION1.ITEM100000","HIS_GR1",1
+        //"HIS_GR1:SECTION1.ITEM100000","SECTION1.ITEM100000","HIS_GR1",1
         var previewText = "\"" + groupNamePrefix + "<nnn>:" + itemNamePrefix + "<nnn>\",\"" + itemNamePrefix + "<nnn>\",\"" + groupNamePrefix + "\"," + groupSettingsValue;
         return previewText;
     }
@@ -88,6 +88,21 @@
             return;
         }
         previewElement.innerHTML = getPreviewText(groupNamePrefix, itemNamePrefix, groupSettingsValue);
+    }
+    
+    function generateQLILines(groupNamePrefix, itemNamePrefix, groupSettingsValue, numOfGroups,itemPerGroups){
+        var totalItems = numOfGroups * itemPerGroups;
+        var itemSeqNum = 1;
+        var QLILines = "";
+        for(var i = 1; i <= numOfGroups; i++){
+            var grpSeqNumStr = i.toString().padStart(numOfGroups.toString().length, 0);
+            for(var j =1; j <= itemPerGroups; j++){
+                var itmSeqNumStr = itemSeqNum.toString().padStart(totalItems.toString().length, 0);
+                QLILines += "\"" + groupNamePrefix + grpSeqNumStr + ":" + itemNamePrefix + itmSeqNumStr + "\",\"" + itemNamePrefix + itmSeqNumStr + "\",\"" + groupNamePrefix + grpSeqNumStr + "\"," + groupSettingsValue + <br>;
+                itemSeqNum++;
+            }
+        }
+        return QLILines;
     }
 </script>
 
