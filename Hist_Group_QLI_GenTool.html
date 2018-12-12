@@ -110,9 +110,20 @@
     }
     
     function copyToClipboard(){
-        var outputElement =  document.getElementById('output');
-        outputElement.select();
-        document.execCommand("copy");
+        var copyContent =  document.getElementById('output').innerHTML;
+        //outputElement.select();
+        //document.execCommand("copy");
+        
+        
+        const el = document.createElement('textarea');
+        el.value = copyContent;
+        el.setAttribute('readonly', '');
+        el.style.position = 'absolute';
+        el.style.left = '-9999px';
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
         alert("Copy to clipboard complete!");
     }
 </script>
