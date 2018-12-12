@@ -44,7 +44,7 @@
         <div data-silex-type="container" class="editable-style silex-element-content silex-id-1474394621032-2 silex-container-content container-element prevent-draggable website-width" data-silex-id="silex-id-1474394621032-2"><div data-silex-type="html" class="editable-style silex-id-1544586279573-2 html-element" data-silex-id="silex-id-1544586279573-2" style=""><div class="silex-element-content"><script>
     function generateQLI(){
         
-        document.getElementById('output').innerHTML = "Hello World";
+        //document.getElementById('output').innerHTML = "Hello World";
         var groupNamePrefix = document.getElementById("groupNamePrefix").value;
         var itemNamePrefix = document.getElementById("itemNamePrefix").value;
         var groupSettingsValue = document.getElementById("groupSettingsValue").value;
@@ -62,14 +62,32 @@
             return;
         }
         
-        var test =  groupNamePrefix + " " + itemNamePrefix + " " + groupSettingsValue + " " + numOfGroups + " " + itemPerGroups ;
-        document.getElementById('output').innerHTML = test;
+        var preview =  groupNamePrefix + " " + itemNamePrefix + " " + groupSettingsValue + " " + numOfGroups + " " + itemPerGroups ;
+        document.getElementById('output').innerHTML = preview;
     }
     
     function getNumericValueFromTextField(textElementValue){
         var numbersPattern = /^[0-9]+$/;
         var value = textElementValue.match(numbersPattern)?parseInt(textElementValue): 0;
         return value;
+    }
+    
+    function getPreviewText(groupNamePrefix, itemNamePrefix, groupSettingsValue){
+        "HIS_GR1:SECTION1.ITEM100000","SECTION1.ITEM100000","HIS_GR1",1
+        var previewText = "\"" + groupNamePrefix + "<nnn>:" + itemNamePrefix + "<nnn>\",\"" + itemNamePrefix + "<nnn>\",\"" + groupNamePrefix + "\"," + groupSettingsValue;
+        return previewText;
+    }
+    
+    function showPreview(){
+        var groupNamePrefix = document.getElementById("groupNamePrefix").value;
+        var itemNamePrefix = document.getElementById("itemNamePrefix").value;
+        var groupSettingsValue = document.getElementById("groupSettingsValue").value;
+        var previewElement = document.getElementById('output');
+        if(groupNamePrefix == "" || itemNamePrefix == "" || groupSettingsValue == ""){
+            previewElement.innerHTML = "Error: Value for Group Name Prefix/ Item Name Prefix / Group Settings Value cannot be empty. No preview generated.";
+            return;
+        }
+        previewElement.innerHTML = getPreviewText(groupNamePrefix, itemNamePrefix, groupSettingsValue);
     }
 </script>
 
@@ -79,7 +97,7 @@
     Item Name Prefix&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;    
     <input id="itemNamePrefix" type="text"> <br><br>
     Group Settings Value &nbsp; &nbsp;
-    <input id="groupSettingsValue" type="text"> <br><br>
+    <input id="groupSettingsValue" type="text" onchange=""> <br><br>
     No. of Groups
     <input id="numOfGroups" type="text"> <br><br>
     Items per group
@@ -88,7 +106,10 @@
     <input id="totalItemCount" type="text"> <br><br>-->
    <center> <button onclick="generateQLI()">Generate</button></center>
     
-<p id="output">Output appear here...</p>
+<p><b>Preview</b></p>     
+<p id="preview"></p> 
+<p><b>Output</b></p>
+<p id="output"></p>
 </div></div></div>
     </div>
     <div data-silex-type="container" class="prevent-draggable container-element editable-style silex-id-1478366450713-3 section-element" data-silex-id="silex-id-1478366450713-3" style="">
