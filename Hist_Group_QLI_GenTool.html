@@ -44,16 +44,24 @@
         <div data-silex-type="container" class="editable-style silex-element-content silex-id-1474394621032-2 silex-container-content container-element prevent-draggable website-width" data-silex-id="silex-id-1474394621032-2"><div data-silex-type="html" class="editable-style silex-id-1544586279573-2 html-element" data-silex-id="silex-id-1544586279573-2" style=""><div class="silex-element-content"><script>
     function generateQLI(){
         document.getElementById('output').innerHTML = "Hello World";
-        alert("hello");
+        var groupNamePrefix = document.getElementById("groupNamePrefix").value;
+        var itemNamePrefix = document.getElementById("itemNamePrefix").value;
+        var groupSettingsValue = document.getElementById("groupSettingsValue").value;
+        var numOfGroups = document.getElementById("numOfGroups").value;
+        var itemPerGroups = document.getElementById("itemPerGroups").value;
+        var totalItemCount = document.getElementById("totalItemCount").value;
+        
+        var test =  groupNamePrefix + " " + itemNamePrefix + " " + groupSettingsValue + " " + numOfGroups + " " + itemPerGroups + " " + totalItemCount;
+        document.getElementById('output').innerHTML = test;
     }
 </script>
 
-<form>
-    Group Name Prefix 
+
+ Group Name Prefix &nbsp; &nbsp;  &nbsp;
     <input id="groupNamePrefix" type="text"><br><br>
-    Item Name Prefix&nbsp; &nbsp;   
+    Item Name Prefix&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;    
     <input id="itemNamePrefix" type="text"> <br><br>
-    Group Settings Value
+    Group Settings Value &nbsp; &nbsp;
     <input id="groupSettingsValue" type="text"> <br><br>
     No. of Groups
     <input id="numOfGroups" type="text"> <br><br>
@@ -61,9 +69,8 @@
     <input id="itemPerGroups" type="text"> <br><br>
     Total item count
     <input id="totalItemCount" type="text"> <br><br>
-    <center><input id="btnGenerate" type="submit" value="Generate" onclick="generateQLI()"></center>
+   <center> <button onclick="generateQLI()">Generate</button></center>
     
-</form>
 <p id="output">Output appear here...</p>
 </div></div></div>
     </div>
