@@ -98,7 +98,7 @@
             var grpSeqNumStr = i.toString().padStart(numOfGroups.toString().length, 0);
             for(var j =1; j <= itemPerGroups; j++){
                 var itmSeqNumStr = itemSeqNum.toString().padStart(totalItems.toString().length, 0);
-                QLILines += "\"" + groupNamePrefix + grpSeqNumStr + ":" + itemNamePrefix + itmSeqNumStr + "\",\"" + itemNamePrefix + itmSeqNumStr + "\",\"" + groupNamePrefix + grpSeqNumStr + "\"," + groupSettingsValue + <br>;
+                QLILines += "\"" + groupNamePrefix + grpSeqNumStr + ":" + itemNamePrefix + itmSeqNumStr + "\",\"" + itemNamePrefix + itmSeqNumStr + "\",\"" + groupNamePrefix + grpSeqNumStr + "\"," + groupSettingsValue + "<br>";
                 itemSeqNum++;
             }
         }
