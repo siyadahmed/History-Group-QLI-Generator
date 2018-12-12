@@ -110,7 +110,7 @@
     }
     
     function copyToClipboard(){
-        var outputElement =  document.getElementById('output').innerHTML = "";
+        var outputElement =  document.getElementById('output').innerHTML;
         outputElement.select();
         document.execCommand("copy");
         alert("Copy to clipboard complete!");
