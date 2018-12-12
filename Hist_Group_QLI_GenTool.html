@@ -47,9 +47,14 @@
         var groupNamePrefix = document.getElementById("groupNamePrefix").value;
         var itemNamePrefix = document.getElementById("itemNamePrefix").value;
         var groupSettingsValue = document.getElementById("groupSettingsValue").value;
-        var numOfGroups = document.getElementById("numOfGroups").value;
-        var itemPerGroups = document.getElementById("itemPerGroups").value;
-        var totalItemCount = document.getElementById("totalItemCount").value;
+        var numOfGroups = parseInt(document.getElementById("numOfGroups").value);
+        var itemPerGroups = parseInt(document.getElementById("itemPerGroups").value);
+        var totalItemCount = parseInt(document.getElementById("totalItemCount").value);
+        
+        if(numOfGroups == undefined || itemPerGroups == undefined || totalItemsCount == undefined){
+            alert("Error: Invalid input. Try with correct inputs.");
+            return;
+        }
         
         var test =  groupNamePrefix + " " + itemNamePrefix + " " + groupSettingsValue + " " + numOfGroups + " " + itemPerGroups + " " + totalItemCount;
         document.getElementById('output').innerHTML = test;
