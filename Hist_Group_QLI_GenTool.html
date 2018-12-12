@@ -43,22 +43,33 @@
     <div data-silex-type="container" class="prevent-draggable container-element editable-style silex-id-1474394621033-3 section-element" data-silex-id="silex-id-1474394621033-3" style="">
         <div data-silex-type="container" class="editable-style silex-element-content silex-id-1474394621032-2 silex-container-content container-element prevent-draggable website-width" data-silex-id="silex-id-1474394621032-2"><div data-silex-type="html" class="editable-style silex-id-1544586279573-2 html-element" data-silex-id="silex-id-1544586279573-2" style=""><div class="silex-element-content"><script>
     function generateQLI(){
-        var numbersPattern = /^[0-9]+$/;
+        
         document.getElementById('output').innerHTML = "Hello World";
         var groupNamePrefix = document.getElementById("groupNamePrefix").value;
         var itemNamePrefix = document.getElementById("itemNamePrefix").value;
         var groupSettingsValue = document.getElementById("groupSettingsValue").value;
-        var numOfGroups = document.getElementById("numOfGroups").value.match(numbersPattern)?parseInt(document.getElementById("numOfGroups").value): 0;
-        var itemPerGroups = parseInt(document.getElementById("itemPerGroups").value);
-        var totalItemCount = parseInt(document.getElementById("totalItemCount").value);
+        var numOfGroups = getNumericValueFromTextField(document.getElementById("numOfGroups").value);
+        var itemPerGroups = getNumericValueFromTextField(document.getElementById("itemPerGroups").value); 
+        //var totalItemCount = getNumericValueFromTextField(document.getElementById("totalItemCount").value);
         
-        if(numOfGroups == 0 || itemPerGroups == undefined || totalItemsCount == undefined){
-            alert("Error: Invalid input. Try with correct inputs.");
+        if(groupNamePrefix == "" || itemNamePrefix == "" || groupSettingsValue == ""){
+            alert("Error: Invalid input. Value for Group Name Prefix/ Item Name Prefix / Group Settings Value cannot be empty. Try with correct inputs.");
+            return;
+        }
+        
+        if(numOfGroups == 0 || itemPerGroups == 0 ){
+            alert("Error: Invalid input. Value for N0. of Groups/ Items per Group is invalid. Try with correct inputs.");
             return;
         }
         
         var test =  groupNamePrefix + " " + itemNamePrefix + " " + groupSettingsValue + " " + numOfGroups + " " + itemPerGroups + " " + totalItemCount;
         document.getElementById('output').innerHTML = test;
+    }
+    
+    function getNumericValueFromTextField(textElementValue){
+        var numbersPattern = /^[0-9]+$/;
+        var value = textElementValue.match(numbersPattern)?parseInt(textElementValue): 0;
+        return value;
     }
 </script>
 
@@ -73,8 +84,8 @@
     <input id="numOfGroups" type="text"> <br><br>
     Items per group
     <input id="itemPerGroups" type="text"> <br><br>
-    Total item count
-    <input id="totalItemCount" type="text"> <br><br>
+    <!--Total item count
+    <input id="totalItemCount" type="text"> <br><br>-->
    <center> <button onclick="generateQLI()">Generate</button></center>
     
 <p id="output">Output appear here...</p>
