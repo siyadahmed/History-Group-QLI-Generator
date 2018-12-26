@@ -127,21 +127,17 @@
         alert("Copy to clipboard complete!");
     }
 </script>
-
-
- Group Name Prefix &nbsp; &nbsp;  &nbsp;
-    <input id="groupNamePrefix" type="text"><br><br>
-    Item Name Prefix&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;    
-    <input id="itemNamePrefix" type="text"> <br><br>
-    Group Settings Value &nbsp; &nbsp;
-    <input id="groupSettingsValue" type="text" onchange="showPreview()"> <br><br>
-    No. of Groups
-    <input id="numOfGroups" type="text"> <br><br>
-    Items per group
-    <input id="itemPerGroups" type="text"> <br><br>
-    <!--Total item count
-    <input id="totalItemCount" type="text"> <br><br>-->
-   <center> <button onclick="generateQLI()">Generate</button>&nbsp;<button onclick="clearOutput()">Clear</button>&nbsp;<button onclick="copyToClipboard()">Copy to Clipboard</button></center>
+&nbsp;
+<table>
+    <tbody><tr><td>Group Name Prefix</td><td><input id="groupNamePrefix" type="text"></td></tr>
+    <tr><td>Item Name Prefix</td><td><input id="itemNamePrefix" type="text"></td></tr>
+    <tr><td>Group Settings Value</td><td><input id="groupSettingsValue" type="text" onchange="showPreview()"></td></tr>
+    <tr><td>No. of Groups</td><td><input id="numOfGroups" type="text"></td></tr>
+    <tr><td>Items per group</td><td><input id="itemPerGroups" type="text"></td></tr>
+    
+</tbody></table>
+<br>
+   &nbsp; <button onclick="generateQLI()">Generate</button>&nbsp;<button onclick="clearOutput()">Clear</button>&nbsp;<button onclick="copyToClipboard()">Copy to Clipboard</button>
     
 <p><b>Preview</b></p>     
 <p id="preview"></p> 
